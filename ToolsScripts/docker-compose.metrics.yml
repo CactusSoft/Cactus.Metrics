@@ -8,7 +8,8 @@ services:
   prometheus:
     image: prom/prometheus:v2.1.0
     volumes:
-      - ./prometheus/:/etc/prometheus/ # Edit path
+      # Edit path
+      - ./prometheus/:/etc/prometheus/ 
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -21,7 +22,8 @@ services:
   alertmanager:
     image: prom/alertmanager
     volumes:
-      - ./alertmanager/:/etc/alertmanager/ # Edit path
+      # Edit path
+      - ./alertmanager/:/etc/alertmanager/
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
@@ -37,9 +39,11 @@ services:
     user: "104"
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/ # Edit path
+      # Edit path
+      - ./grafana/provisioning/:/etc/grafana/provisioning/ 
     env_file:
-      - ./grafana/config.monitoring # Edit path
+      # Edit path
+      - ./grafana/config.monitoring
     restart: always
     ports:
       - "3000:3000"
