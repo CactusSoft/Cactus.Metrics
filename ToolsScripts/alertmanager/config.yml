@@ -1,0 +1,18 @@
+# Description at https://prometheus.io/docs/alerting/configuration/
+
+# Example for email alerting
+# global:
+#     smtp_from: 'foo@foo.com'
+#     smtp_smarthost: 'foo_smarthost'
+#     smtp_auth_username: 'foo_username'
+#     smtp_auth_password: 'foo_pass'
+#     smtp_auth_identity: 'foo_identity'
+
+# route:
+#     receiver: 'email'
+
+# receivers:
+#     - name: 'email'
+#       email_configs:
+#           - to: 'foo@reciever.net'
+#             send_resolved: true

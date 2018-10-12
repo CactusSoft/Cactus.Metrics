@@ -1,0 +1,51 @@
+version: '3'
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.1.0
+    volumes:
+      # Edit path
+      - ./prometheus/:/etc/prometheus/ 
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: always
+    ports:
+      - "9090:9090"
+    networks: # Edit networks
+      - YourNetworkName
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      # Edit path
+      - ./alertmanager/:/etc/alertmanager/
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    restart: always
+    ports:
+      - "9093:9093"
+    networks: # Edit networks
+      - YourNetworkName
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - prometheus
+    user: "104"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      # Edit path
+      - ./grafana/provisioning/:/etc/grafana/provisioning/ 
+    env_file:
+      # Edit path
+      - ./grafana/config.monitoring
+    restart: always
+    ports:
+      - "3000:3000"
+    networks: # Edit networks
+      - YourNetworkName 
