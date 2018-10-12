@@ -9,13 +9,13 @@ Repository contains a project for middleware and tools script
 
 ## How to use
 1. Install [prometheus-net.AspNetCore](https://github.com/prometheus-net/prometheus-net). It is needed to expose metric endpoint
-1. Install [NuGet package](provide link)
+1. Install [NuGet package](https://www.nuget.org/packages/Cactus.Aspnetcore.MetricMiddleware/)
 1. In Startup.cs add middleware into core pipeline:
   ```c#
   app.UseMetricServer(); // Prometheus exstension to expose metric endpoint
   app.UseCactusMetric();
   ```
-4. Clone [ToolsScript](provide link) folder to your machine
+4. Clone [ToolsScript](https://github.com/CactusSoft/Cactus.Metrics/tree/master/ToolsScripts) folder to your machine
 1. Edit configs to match for your project
 1. Use docker-compose.metrics.yml to start tools
 
@@ -25,19 +25,18 @@ Use **MetricMiddlewareConfig** object to change standart behavior:
 * ExcludeStatusCodeMetric - set true to exclude status code metric
 * ProceedRequestTimeBuckets - proceed request time buckets upper levels (milliseconds). Affect performance (fewer - better performance) Default: {50.0, 100, 200, 500, 1000, 1500, 2000} [Details here](https://prometheus.io/docs/concepts/metric_types/#histogram)
 ### Prometheus
-In [ToolScripts/prometheus](provide link) there are two config files:
+In [ToolScripts/prometheus](https://github.com/CactusSoft/Cactus.Metrics/tree/master/ToolsScripts/prometheus) there are two config files:
 * alert.rules - contains rules for Prometheus alerting [Details here](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 * prometheus.yml - contains Prometheus config [Details here](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
 **Add servers to monitor in scrape_configs section**
 ### Alertmanager
-In [ToolScripts/alertmanager](provide link) there is config.yml for alerting configuration [Details here](https://prometheus.io/docs/alerting/configuration/)
+In [ToolScripts/alertmanager](https://github.com/CactusSoft/Cactus.Metrics/tree/master/ToolsScripts/alertmanager) there is config.yml for alerting configuration [Details here](https://prometheus.io/docs/alerting/configuration/)
 ### Grafana
 In Grafana included two dashboards:
 * Docker (actually not perfect without swarm)
 * General - shows proceed request times, response status code counts, CPU/memory usage, uptime
-You can add your own dashboards in [ToolScriptsgrafana/provisioning/dashboards](provide link) folder
+You can add your own dashboards in [ToolScriptsgrafana/provisioning/dashboards](https://github.com/CactusSoft/Cactus.Metrics/tree/master/ToolsScripts/grafana/provisioning/dashboards) folder
+
 To update preconfigured dashboards, export it and import back in Grafana ([Details here](http://docs.grafana.org/administration/provisioning/#dashboards))
-#### Change password
-**In [ToolScripts/alertmanager/config.monitoring](provide link) file.**
 ### docker-compose.metrics.yml
 You should change networks sections and path in volumes sections (if you changed docker-compose.metrics.yml path)
