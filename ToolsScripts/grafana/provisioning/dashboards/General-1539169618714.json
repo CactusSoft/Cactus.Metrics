@@ -402,7 +402,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.9, sum(rate(kimeru_proceed_request_time_ms_bucket[1m])) by (le, endpoint)) ",
+          "expr": "histogram_quantile(0.9, sum(rate(server_proceed_request_time_ms_bucket[1m])) by (le, endpoint)) ",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{endpoint}}",
@@ -489,7 +489,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(kimeru_status_code_count) by (method)",
+          "expr": "sum(server_status_code_count) by (method)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{method}}",
@@ -575,7 +575,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(kimeru_status_code_count) by (code)",
+          "expr": "sum(server_status_code_count) by (code)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{code}}",
