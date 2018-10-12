@@ -13,8 +13,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\artem.petrenko\source\repos\MetricMiddleware\Cactus.Aspnetcore.MetricMiddleware\Cactus.Aspnetcore.MetricMiddleware.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netcoreapp2.1\Cactus.Aspnetcore.MetricMiddleware.xml</DocumentationFile>
     <NoWarn>1701;1702;CS1591</NoWarn>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.1\Cactus.Aspnetcore.MetricMiddleware.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
