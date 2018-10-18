@@ -38,5 +38,16 @@ In Grafana included two dashboards:
 You can add your own dashboards in [ToolScriptsgrafana/provisioning/dashboards](https://github.com/CactusSoft/Cactus.Metrics/tree/master/ToolsScripts/grafana/provisioning/dashboards) folder
 
 To update preconfigured dashboards, export it and import back in Grafana ([Details here](http://docs.grafana.org/administration/provisioning/#dashboards))
+
+#### Credentials
+For the first login, after that Grafana suggests changing password
+
+Login: admin
+
+Password: admin
+
+**OR** you can set admin password in [ToolsScripts/grafana/config.monitoring](https://github.com/CactusSoft/Cactus.Metrics/blob/master/ToolsScripts/grafana/config.monitoring) file in GF_SECURITY_ADMIN_PASSWORD parameter
+
+
 ### docker-compose.metrics.yml
 You should change networks sections and path in volumes sections (if you changed docker-compose.metrics.yml path)
