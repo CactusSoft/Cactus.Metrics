@@ -48,5 +48,6 @@ Password: admin
 
 **OR** you can set admin password in [ToolsScripts/grafana/config.monitoring](https://github.com/CactusSoft/Cactus.Metrics/blob/master/ToolsScripts/grafana/config.monitoring) file in GF_SECURITY_ADMIN_PASSWORD parameter
 
+
 ### docker-compose.metrics.yml
 You should change networks sections and path in volumes sections (if you changed docker-compose.metrics.yml path)
