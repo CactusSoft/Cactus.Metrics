@@ -235,6 +235,13 @@
           "intervalFactor": 1,
           "legendFormat": "{{job}} - {{instance}}",
           "refId": "A"
+        },
+        {
+          "expr": "sum(rate(process_cpu_seconds_total[30s]) * 100)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Common",
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -369,6 +376,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "description": "90% quantile means  that 90% of requests are proceeded less than value milliseconds",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -402,17 +410,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.9, sum(rate(server_proceed_request_time_ms_bucket[1m])) by (le, endpoint)) ",
+          "expr": "histogram_quantile(0.9, sum(rate(server_proceed_request_time_ms_bucket[1m])) by (le, endpoint, instance)) ",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{endpoint}}",
+          "legendFormat": "{{instance}} - {{endpoint}}",
           "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Response time 90% quantile for last min",
+      "title": "Response time 90% quantile for last min, ms",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -489,10 +497,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(server_status_code_count) by (method)",
+          "expr": "sum(server_status_code_count) by (method, instance)",
           "format": "time_series",
+          "hide": false,
           "intervalFactor": 1,
-          "legendFormat": "{{method}}",
+          "legendFormat": "{{instance}} - {{method}}",
           "refId": "A"
         }
       ],
@@ -575,10 +584,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(server_status_code_count) by (code)",
+          "expr": "sum(server_status_code_count) by (code, instance)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{code}}",
+          "legendFormat": "{{instance}} - {{code}}",
           "refId": "A"
         }
       ],
@@ -623,6 +632,7 @@
       }
     }
   ],
+  "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -630,7 +640,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -661,5 +671,5 @@
   "timezone": "",
   "title": "General",
   "uid": "CNNYAm1iz",
-  "version": 40
+  "version": 1
 }
